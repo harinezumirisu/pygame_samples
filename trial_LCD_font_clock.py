@@ -1,10 +1,10 @@
-# demo for 7-segment simulation
-# using the class 'Seven_seg' in seven_seg_pg.py
-
 from datetime import datetime
-import pygame
-from seven_seg_pg import Seven_seg
 
+from pygame.locals import Rect
+
+import pygame
+import pygame.freetype
+from trial_LCD_font_pg import LCD_font
 
 DARK_GRAY = (40, 40, 40)
 GRAY = (80, 80, 80)
@@ -19,8 +19,9 @@ pygame.init()
 
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode([600, 150])
-pygame.display.set_caption("7-segment display clock")
+pygame.display.set_caption("LCD-font display clock")
 screen.fill(ORANGE)
+
 
 
 running = True
@@ -35,18 +36,20 @@ while running:
             break
         # 「for count」のループから抜ける。whileループも抜ける。
 
-        display1 = Seven_seg(screen)
-        display1.init_col(BLOCK_SIZE=9, BLOCK_INTV=10, COLOR_ON=WHITE, COLOR_OFF=ORANGE)
-        display1.init_row(X_ORG=4, Y_ORG=10, COL_INTV=6)
+        lcd1 = LCD_font(screen)
+        lcd1.init_col(BLOCK_SIZE=7, BLOCK_INTV=8, COLOR_ON=WHITE, COLOR_OFF=ORANGE)
+        lcd1.init_row(X_ORG=8, Y_ORG=8, COL_INTV=6)
 
         h = count // 3600  # 1時間
         h = h % 24  # 12か、24
-        display1.update_col(col=0, num=h // 10, base=10)
-        display1.update_col(col=1, num=h % 10, base=10)
-        display1.update_col(col=3, num=count // (600), base=6)   # 10分
-        display1.update_col(col=4, num=count // (60), base=10)   # 1分
-        display1.update_col(col=6, num=count // (10), base=6)   # 10秒
-        display1.update_col(col=7, code=count // (1), base=10)   # 1秒
+        lcd1.update_col(col=0, code=h // 10) 
+        lcd1.update_col(col=1, code=h % 10)
+        lcd1.update_col(col=2, code=10)
+        lcd1.update_col(col=3, code=count // 60 % 60)   # 10分
+        lcd1.update_col(col=4, code=count // 60 % 10)   # 1分
+        lcd1.update_col(col=5, code=10)
+        lcd1.update_col(col=6, code=count // 10 % 6)   # 10秒
+        lcd1.update_col(col=7, code=count % 10)   # 1秒
 
         dt_now = datetime.now()
         time_now = (dt_now.hour * 3600
