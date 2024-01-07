@@ -46,7 +46,7 @@ while running:
         display1.update_col(col=3, num=count // (600), base=6)   # 10分
         display1.update_col(col=4, num=count // (60), base=10)   # 1分
         display1.update_col(col=6, num=count // (10), base=6)   # 10秒
-        display1.update_col(col=7, code=count // (1), base=10)   # 1秒
+        display1.update_col(col=7, num=count // (1), base=10)   # 1秒
 
         dt_now = datetime.now()
         time_now = (dt_now.hour * 3600

@@ -1,10 +1,14 @@
 # handmade LCD font for pygame
 # 5x7ドットマトリクス
 
-# from math import log
+from math import log
 import pygame
 from pygame.locals import Rect
 
+from mcpi.minecraft import Minecraft
+import param_MCJE1122 as param
+from time import sleep
+mc = Minecraft.create(port=param.PORT_MC)
 
 LCD_0 = (0, 1, 1, 1, 0,
          1, 0, 0, 0, 1,
@@ -104,38 +108,27 @@ LCD_DOT = (0, 0, 0, 0, 0,
 
 LCD_font_styles = (LCD_0, LCD_1, LCD_2, LCD_3, LCD_4, LCD_5, LCD_6, LCD_7, LCD_8, LCD_9, LCD_COLON, LCD_DOT)
 
-DARK_GRAY = (40, 40, 40)
-GRAY = (80, 80, 80)
-RED = (255, 0, 0)
-GREEN = (10, 250, 10)
-YELLOW = (250, 250, 20)
-WHITE = (250, 250, 250)
-ORANGE = (255, 200, 0)
-
 
 class LCD_font():
-    def __init__(self, screen):
-        self.screen = screen
+    def __init__(self, mc):
+        self.mc = mc
 
-    def init_col(self, BLOCK_SIZE=4, BLOCK_INTV=4, COLOR_ON=WHITE, COLOR_OFF=ORANGE):
+    def init_col(self, COLOR_ON=param.SEA_LANTERN_BLOCK, COLOR_OFF=param.AIR):
         # ひと桁、コラムの設定
-        # ブロックのサイズと配置間隔をピクセル指定（インターバル）
-        self.BLOCK_SIZE = BLOCK_SIZE
-        self.BLOCK_INTV = BLOCK_INTV
         # on/offのカラー
         self.COLOR_ON = COLOR_ON
         self.COLOR_OFF = COLOR_OFF
 
-    def init_row(self, X_ORG=2, Y_ORG=8, COL_INTV=6):  # 表示行の設定
-        # xy空間での7セグ表示、最上位桁の左下座標をブロック数で指定
-        self.X_ORG = X_ORG * self.BLOCK_INTV
-        self.Y_ORG = Y_ORG * self.BLOCK_INTV
+    def init_row(self, X_ORG=2, Y_ORG=8, Z_ORG=0, COL_INTV=6):  # 表示行の設定
+        # xy空間での表示、最上位桁の左下座標をブロック数で指定
+        self.X_ORG = X_ORG
+        self.Y_ORG = Y_ORG
+        self.Z_ORG = Z_ORG
         # 各桁のブロック間隔をブロック数で指定（インターバル）
-        self.COL_INTV = COL_INTV * self.BLOCK_INTV
+        self.COL_INTV = COL_INTV
 
     def update_col(self, col=0, code=2):  # ある桁にある文字を表示する関数
         # codeの文字をcol桁目に表示、桁は最上位桁の左から右へ進む。
-        block_size = self.BLOCK_SIZE
         i = 0
         for y in range(7):
             for x in range(5):
@@ -144,11 +137,31 @@ class LCD_font():
                 else:
                     color = self.COLOR_OFF
                 # 桁の原点
-                x0 = self.X_ORG + self.COL_INTV * col
-                y0 = self.Y_ORG
+                x1 = x + self.X_ORG + self.COL_INTV * col
+                y1 = self.Y_ORG - y
+                z1 = self.Z_ORG
                 # ドットの原点座標
-                org1 = (x0 + x * self.BLOCK_INTV, y0 + y * self.BLOCK_INTV)
                 # ドットを描く
-                pygame.draw.rect(self.screen, color, Rect(org1[0], org1[1], block_size, block_size))
+                mc.setBlock(x1, y1, z1, color)
+                # print(x1, y1, z1)
                 i += 1
-                print(i)
+                # print(i)
+
+
+    def disp_num2(self, rjust=4, zfil=False, num=1234):
+        # numをrjust桁で右詰め表示する。桁あふれが起きると、右にずれていく。
+        # zfil==Trueの時、上位桁をゼロで埋める。Falseの場合は、ブランク表示。
+        if num <= 0:
+            num = 1
+        num_cols = int(log(num, 10)) + 1
+        if num_cols > rjust:
+            rjust = num_cols
+        for disp_col in range(rjust):
+            col = disp_col + num_cols - rjust
+            if col >= 0:
+                self.update_col(col=disp_col, code=num // (10 ** (num_cols - col - 1)))
+            else:
+                if zfil is True:
+                    self.update_col(col=disp_col, code=0)
+                else:
+                    self.update_col(col=disp_col, blank=True)
