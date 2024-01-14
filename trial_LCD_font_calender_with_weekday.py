@@ -17,9 +17,20 @@ ORANGE = (255, 200, 0)
 pygame.init()
 
 clock = pygame.time.Clock()
-screen = pygame.display.set_mode([600, 300])
-pygame.display.set_caption("LCD-font digital clock")
+screen = pygame.display.set_mode([700, 300])
+pygame.display.set_caption("LCD-font calender clock")
 screen.fill(ORANGE)
+
+def getWeekDay():
+    y = dt_now.year
+    m = dt_now.month
+    d = dt_now.day
+    if dt_now.month == 1 or dt_now.month == 2:
+        y -= 1
+        m += 12
+    w = (y + y // 4 - y // 100 + y // 400 + (13 * m + 8) // 5 + d) % 7
+    return w
+
 
 running = True
 # infinite loop top ----
@@ -33,15 +44,18 @@ while running:
             break
         # 「for count」のループから抜ける。whileループも抜ける。
 
+
         lcd1 = LCD_font(screen)
         lcd1.init_col(BLOCK_SIZE=7, BLOCK_INTV=8, COLOR_ON=WHITE, COLOR_OFF=ORANGE)
         lcd1.init_row(X_ORG=8, Y_ORG=8, COL_INTV=6)
 
         lcd2 = LCD_font(screen)
+
         lcd2.init_col(BLOCK_SIZE=7, BLOCK_INTV=8, COLOR_ON=WHITE, COLOR_OFF=ORANGE)
         lcd2.init_row(X_ORG=8, Y_ORG=18, COL_INTV=6)
 
         dt_now = datetime.now()
+
         # time_now = (dt_now.hour * 3600
         #             + dt_now.minute * 60
         #             + dt_now.second)
@@ -58,6 +72,8 @@ while running:
         lcd1.update_col(col=7, code=12) # ハイフン
         lcd1.update_col(col=8, code=dt_now.day // 10) 
         lcd1.update_col(col=9, code=dt_now.day % 10)   # 日
+        lcd1.update_col(col=10, code=12) # ハイフン
+        lcd1.update_col(col=11, code=getWeekDay() + 13) # 曜日
 
         lcd2.update_col(col=0, code=dt_now.hour // 10) 
         lcd2.update_col(col=1, code=dt_now.hour % 10)  # 時
