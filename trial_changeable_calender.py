@@ -71,8 +71,10 @@ while running:
 
         if the_month > 12:
             the_month = 1
+            the_year += 1
         if the_month < 1:
             the_month = 12
+            the_year -= 1
 
         lcd1 = LCD_font(screen)
         lcd1.init_col(BLOCK_SIZE=7, BLOCK_INTV=8, COLOR_ON=WHITE, COLOR_OFF=ORANGE)
