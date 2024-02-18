@@ -11,7 +11,7 @@ Please especially enjoy some codes below.
  -fancy_shapes : I built fancy shapes by squares and circles. Green squares will change color in order.
 
  [<img src="./fancy_shapes.pg.png" width="200">](./fancy_shapes.pg.png)
- [<img src="./LCD_font_monthly_calender.pg.py.png" width="300">](./LCD_font_monthly_calender.pg.py.png)
+ [<img src="./LCD_font_monthly_calendar.pg.py.png" width="300">](./LCD_font_monthly_calendar.pg.py.png)
 
 ## The original README is below.
 # pygame_samples
