@@ -18,7 +18,7 @@ pygame.init()
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode([1200, 700])
-pygame.display.set_caption("LCD-font monthly calender")
+pygame.display.set_caption("LCD-font monthly calendar")
 screen.fill(ORANGE)
 
 lcd1 = LCD_font_pg(screen)

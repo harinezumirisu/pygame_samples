@@ -24,7 +24,7 @@ pygame.init()
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode([700, 300])
-pygame.display.set_caption("LCD-font digital clock and calender")
+pygame.display.set_caption("LCD-font digital clock and calendar")
 screen.fill(ORANGE)
 
 lcd1 = LCD_font_pg(screen)
@@ -35,7 +35,7 @@ lcd2 = LCD_font_pg(screen)
 lcd2.init_col(BLOCK_SIZE=7, BLOCK_INTV=8, COLOR_ON=WHITE, COLOR_OFF=ORANGE)
 lcd2.init_row(X_ORG=8, Y_ORG=18, COL_INTV=6)
 
-mc.postToChat ( "Let's make a digital clock and calender" )
+mc.postToChat ( "Let's make a digital clock and calendar" )
 
 x0, y0, z0 =  mc.player.getPos()
 
