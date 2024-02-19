@@ -1,14 +1,14 @@
 # Digital Clock and Monthly Calendar by LCD font numbers
 I made some digital clocks and monthly calendars for pygame and minecraft world.
 This is my first step to push on GitHub repository.
-Please especially enjoy some codes below.
- - LCD_font_calender_in_mc_and_pg.py : digital clock and calendar for pygame and minecraft
- - LCD_font_monthly_calendar.pg.py : a monthly calendar with today's date in red for pygame
- - LCD_font_changeable_monthly_calendar.pg.py : digital monthly calendar for pygame
-    You can change the month to push ← or → by month and ↑ or ↓ by year.
-    It suddenly erases dates of the monthly calendar when it's changed month though I don't know why.
+Please enjoy especially some codes below.
+ - LCD_font_calender_in_mc_and_pg.py : This is a digital clock and calendar for pygame and minecraft.
+ - LCD_font_monthly_calendar.pg.py : This is a monthly calendar with today's date in red for pygame.
+ - LCD_font_changeable_monthly_calendar.pg.py : This is a digital monthly calendar for pygame.
+    You can change the month by pushing ← or → key and the year by pushing ↑ or ↓.
+    It suddenly erases dates of the monthly calendar when it's changed months though I don't know why.
     If somebody finds the bug, please tell me.
- - fancy_shapes : I built fancy shapes by squares and circles. Green squares will change color in order.
+ - fancy_shapes.py : I built fancy shapes by squares and circles for pygame. Green squares will change color in order.
 
  [<img src="./fancy_shapes.pg.png" width="200">](./fancy_shapes.pg.png)
  [<img src="./LCD_font_monthly_calendar.pg.py.png" width="300">](./LCD_font_monthly_calendar.pg.py.png)
