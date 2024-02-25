@@ -10,7 +10,7 @@ Please enjoy especially some codes below.
     It suddenly erases dates of the monthly calendar when it's changed months though I don't know why.
     If somebody finds the bug, please tell me.
  - fancy_shapes.py : I built fancy shapes by squares and circles for pygame. Green squares will change color in order.
- [<img scr="./LCD_font_monthly_calendar.mc.py.png" width="350">](./LCD_font_monthly_calendar.mc.py.png)
+ [<img src="./LCD_font_monthly_calendar.mc.py.png" width="350">](./LCD_font_monthly_calendar.mc.py.png)
  [<img src="./fancy_shapes.pg.png" width="200">](./fancy_shapes.pg.png)
  [<img src="./LCD_font_monthly_calendar.pg.py.png" width="300">](./LCD_font_monthly_calendar.pg.py.png)
 
