@@ -19,6 +19,8 @@ Please enjoy especially some codes below.
     You can change the month by pushing ← or → key and the year by pushing ↑ or ↓.
     It suddenly erases dates of the monthly calendar when it's changed months though I don't know why.
     If somebody finds the bug, please tell me.
+    → I fix it completely. Please check the code below.
+    [LCD_font_new_changeable_monthly_calendar_pg.py](./LCD_font_new_changeable_monthly_calendar_pg.py)
 
   [<img src="./images/LCD_font_changeable_monthly_calendar_pg.py.png" width="300">](./LCD_font_changeable_monthly_calendar_pg.py.png)
 

@@ -17,6 +17,8 @@ LCDフォントを使って、パイゲームとマインクラフトでデジ�
 
  - [LCD_font_changeable_monthly_calendar_pg.py](./LCD_font_changeable_monthly_calendar_pg.py) : これは、矢印キーで年月を変更できるパイゲームの月間カレンダーです。
  上下矢印キーで年数を変更し、左右矢印キーで月を変更できます。しかし、なぜか突然操作中に月間カレンダー日付が消えてしまうことがあり、もし原因がわかる方がいたら、教えてください。
+  →　不具合修正しました。以下のコードをみてください。
+    [LCD_font_new_changeable_monthly_calendar_pg.py](./LCD_font_new_changeable_monthly_calendar_pg.py)
 
   [<img src="./images/LCD_font_changeable_monthly_calendar_pg.py.png" width="300">](./LCD_font_changeable_monthly_calendar_pg.py.png)
 
