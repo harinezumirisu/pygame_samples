@@ -213,7 +213,7 @@ https://github.com/harinezumirisu/pygame_samples/blob/main/images/%E7%94%BB%E9%9
       display4.__init__(screen)
       display4.init_col(BLOCK_SIZE=4, BLOCK_INTV=6, COLOR_ON=GREEN, COLOR_OFF=DARK_GRAY)
       display4.init_row(X_ORG=2, Y_ORG=14, COL_INTV=6)
-### 2.マイクラ表示の準備
+### 2.マイクラ表示の準備(lcd_font_mc.py)
 #### 1.変更前
       class LCD_font():
         def __init__(self, screen):
