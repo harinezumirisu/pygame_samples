@@ -2,7 +2,7 @@
 
   1.demo_01.py
     1. ウィンドウの名前の変更
-      1.pygame.display.set_caption("pygame demo - window title here")
+      ![alt text](image.png)
     2.ウィンドウやオブジェクトの色、オブジェクトのサイズの変更
       1.変数の設定
         c1, c2, c3, c4, c5 = 255, 204, 153, 102, 51
