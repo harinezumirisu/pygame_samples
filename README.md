@@ -236,6 +236,8 @@
           block_size = self.BLOCK_SIZE
           i = 0
 #### 2.変更後
+      mc.setBlock(-5, 70, -5, param.GOLD_BLOCK)
+      
       class LCD_font():
         def __init__(self, screen):
           self.screen = screen
