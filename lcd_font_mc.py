@@ -123,10 +123,11 @@ class LCD_font():
     def update_col(self, col=0, code=2, mz=-10, y_change=90):  # ある桁にある文字を表示する関数
         # codeの文字をcol桁目に表示、桁は最上位桁の左から右へ進む。
         block_size = self.BLOCK_SIZE
-        i = 0
+        i2 = 0
         for y in range(7):
+            i1 = 0
             for x in range(5):
-                if LCD_font_styles[code * 7 + y][x] == 1:
+                if LCD_font_styles[code * 7 + i2][i1] == 1:
                     color = self.COLOR_ON
                 else:
                     color = self.COLOR_OFF
@@ -134,14 +135,39 @@ class LCD_font():
                 x0 = self.X_ORG + self.COL_INTV * col
                 y0 = self.Y_ORG
                 # 桁の原点
-                mx0 = 48 - (7 * col)
+                mx0 = 48 - (6 ** col)
                 my0 = 0
+                mx1 = mx0 - x
+                my1 = my0 - y + y_change
                 # ドットの原点座標
                 org1 = (x0 + x * self.BLOCK_INTV, y0 + y * self.BLOCK_INTV)
                 # ドットを描く
                 pygame.draw.rect(self.screen, color, Rect(org1[0], org1[1], block_size, block_size))
-                if LCD_font_styles[code * 7 + y][x] == 1:
-                    mc.setBlock(mx0-x, my0-y+y_change,mz,  param.IRON_BLOCK)
+                if LCD_font_styles[code * 7 + i2][i1] == 1:
+                    mc.setBlock(mx1, my1, mz,  param.IRON_BLOCK)
                 else:
-                    mc.setBlock(mx0-x, my0-y+y_change,mz,  param.AIR)
-                i += 1
+                    mc.setBlock(mx1, my1, mz,  param.AIR)
+                i1 += 1
+            i2 += 1
+    def backspace(self, col=0, mz=-10, y_change=90):
+        block_size = self.BLOCK_SIZE
+        i2 = 0
+        for y in range(7):
+            i1 = 0
+            for x in range(5):
+                color = self.COLOR_OFF
+                # 桁の原点
+                x0 = self.X_ORG + self.COL_INTV * col
+                y0 = self.Y_ORG
+                # 桁の原点
+                mx0 = 48 - (6 ** col)
+                my0 = 0
+                mx1 = mx0 - x
+                my1 = my0 - y + y_change
+                # ドットの原点座標
+                org1 = (x0 + x * self.BLOCK_INTV, y0 + y * self.BLOCK_INTV)
+                # ドットを描く
+                pygame.draw.rect(self.screen, color, Rect(org1[0], org1[1], block_size, block_size))
+                mc.setBlock(mx1, my1, mz,  param.AIR)
+                i1 += 1
+            i2 += 1
