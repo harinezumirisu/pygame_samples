@@ -3,7 +3,7 @@
 import pygame
 import pygame.freetype
 # import time
-from lcd_font_pg import LCD_font
+from lcd_font_pg import LCD_font as LCD_font_pg
 
 DARK_GRAY = (40, 40, 40)
 GRAY = (80, 80, 80)
@@ -24,18 +24,20 @@ clock = pygame.time.Clock()
 
 font1 = pygame.freetype.Font("fonts/natumemozi.ttf", 48)
 
-lcd1 = LCD_font(screen)
+lcd1 = LCD_font_pg(screen)
 lcd1.init_col(BLOCK_SIZE=7, BLOCK_INTV=8, COLOR_ON=GREEN, COLOR_OFF=GRAY)
 lcd1.init_row(X_ORG=8, Y_ORG=8, COL_INTV=6)
 
 
 def LCD_display(x, y):
-    code = int((x / 8) % 3)
-    text1, rect1 = font1.render(str(code), WHITE)
+    code0 = int((x / 8) % 10)
+    code1 = int((((x / 8)-code0) % 100) // 10)
+    text1, rect1 = font1.render(str((10*code1)+code0), WHITE)
     rect1.center = (x, y)
     screen.blit(text1, rect1)
-    # LCD sim
-    lcd1.update_col(col=0, code=code)
+    lcd1.update_col(col=0, code=code1)
+    lcd1.update_col(col=1, code=code0)
+
 
 
 def infinite_loop():

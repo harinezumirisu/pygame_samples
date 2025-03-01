@@ -5,8 +5,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode([640, 480])
-
-pygame.display.set_caption("All This World Is Made of Black And White")
+pygame.display.set_caption("All This World Is Made of 3color")
 
 running = True
 x1, y1 = 0, 0
@@ -20,7 +19,6 @@ cr2, cg2, cb2 = 204, 204, 204
 cr3, cg3, cb3 = 153, 153, 153
 cr4, cg4, cb4 = 102, 102, 102
 cr5, cg5, cb5 = 51, 51 ,51
-x2, y2 = 200, 120
 
 # infinite loop top ----
 while running:
@@ -29,20 +27,20 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill((c1, c1, c1))  # back ground color
+    screen.fill((cr1, cg1, cb1))  # back ground color
     
     if s3>s2:
 
-        pygame.draw.circle(screen, (c2, c2, c2), (320, 240), s1)
-        pygame.draw.circle(screen, (c4, c4, c4), (120, 120), s3)
-        pygame.draw.circle(screen, (c3, c3, c3), (120, 120), s2)
-        pygame.draw.rect(screen, (c5, c5, c5), Rect(120, 120, x2, y2))
+        pygame.draw.circle(screen, (cr2, cg2, cb2), (320, 240), s1)
+        pygame.draw.circle(screen, (cr4, cg4, cb4), (120, 120), s3)
+        pygame.draw.circle(screen, (cr3, cg3, cb3), (120, 120), s2)
+        pygame.draw.rect(screen, (cr5, cg5, cb5), Rect(120, 120, 200, 120))
     if s2>s3:
          
-        pygame.draw.circle(screen, (c2, c2, c2), (320, 240), s1)
-        pygame.draw.circle(screen, (c3, c3, c3), (120, 120), s2)
-        pygame.draw.circle(screen, (c4, c4, c4), (120, 120), s3)
-        pygame.draw.rect(screen, (c5, c5, c5), Rect(120, 120, x2, y2))
+        pygame.draw.circle(screen, (cr2, cg2, cb2), (320, 240), s1)
+        pygame.draw.circle(screen, (cr3, cg3, cb3), (120, 120), s2)
+        pygame.draw.circle(screen, (cr4, cg4, cb4), (120, 120), s3)
+        pygame.draw.rect(screen, (cr5, cg5, cb5), Rect(120, 120, 200, 120))
     c1 -= 2
     if c1 < 205:
         c1 = 255
@@ -58,49 +56,49 @@ while running:
     c5 -= 3
     if c5 < 1:
         c5 = 51
-    cr1 -= 3
+    cr1 -= 5
     if cr1 < 205:
         cr1 = 255
-    cr2 -= 3
+    cr2 -= 4
     if cr2 < 154:
         cr2 = 204
     cr3 -= 3
     if cr3 < 103:
         cr3 = 153
-    cr4 -= 3
+    cr4 -= 2
     if cr4 < 52:
         cr4 = 102
-    cr5 -= 3
+    cr5 -= 1
     if cr5 < 1:
         cr5 = 51
-    cg1 -= 5
+    cg1 -= 1
     if cg1 < 205:
         cg1 = 255
-    cg2 -= 4
+    cg2 -= 2
     if cg2 < 154:
         cg2 = 204
     cg3 -= 3
     if cg3 < 103:
         cg3 = 153
-    cg4 -= 2
+    cg4 -= 4
     if cg4 < 52:
         cg4 = 102
-    cg5 -= 1
+    cg5 -= 5
     if cg5 < 1:
         cg5 = 51
-    cb1 -= 5
+    cb1 -= 3
     if cb1 < 205:
         cb1 = 255
-    cb2 -= 4
+    cb2 -= 3
     if cb2 < 154:
         cb2 = 204
     cb3 -= 3
     if cb3 < 103:
         cb3 = 153
-    cb4 -= 2
+    cb4 -= 3
     if cb4 < 52:
         cb4 = 102
-    cb5 -= 1
+    cb5 -= 3
     if cb5 < 1:
         cb5 = 51
     s1 += 2
@@ -112,12 +110,6 @@ while running:
     s3 += 3
     if s3 > 125:
         s3 = 50
-    x2 +=5
-    if x2 > 320:
-        x2 = 100
-    y2 += 5
-    if y2 > 240:
-        y2 = 20
 
     color_on = (r1, g1, b1)
     color_off = (r2, g2, b2)
