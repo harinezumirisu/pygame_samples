@@ -1,16 +1,15 @@
 # 元のプログラムからの変更状況
-
-  1.demo_01.py
-    1. ウィンドウの名前の変更
-      1.pygame.display.set_caption("pygame demo - window title here")
-    2.ウィンドウやオブジェクトの色、オブジェクトのサイズの変更
-      1.変数の設定
+## 1.demo_01.py
+### 1. ウィンドウの名前の変更
+      pygame.display.set_caption("All This World Is Made of Black And White")
+### 2.ウィンドウやオブジェクトの色、オブジェクトのサイズの変更
+#### 1.変数の設定
         c1, c2, c3, c4, c5 = 255, 204, 153, 102, 51
         s1, s2, s3 = 150, 125, 50
         r1, r2 = 0, 0
-      2.スクリーンの表示
+#### 2.スクリーンの表示
         screen.fill((c1, c1, c1))
-      3.オブジェクトの表示
+#### 3.オブジェクトの表示
         if s3>s2:
           pygame.draw.circle(screen, (c2, c2, c2), (320, 240), s1)
           pygame.draw.circle(screen, (c4, c4, c4), (120, 120), s3)
@@ -21,18 +20,18 @@
           pygame.draw.circle(screen, (c3, c3, c3), (120, 120), s2)
           pygame.draw.circle(screen, (c4, c4, c4), (120, 120), s3)
           pygame.draw.rect(screen, (c5, c5, c5), Rect(120, 120, x2, y2))
-    3.カラーオン、カラーオフの色の変更
-      1.変数の設定
+### 3.カラーオン、カラーオフの色の変更
+#### 1.変数の設定
         r1, r2 = 0, 0
         g1, g2 = 0, 255
         b1, b2 = 255, 0
-      2.オブジェクトの表示
+#### 2.オブジェクトの表示
         for x0 in range(5):
           for y0 in range(7):
             pygame.draw.rect(screen, color_off, Rect(24 + x0 * 16, 24 + y0 * 16, 12, 12))
         pygame.draw.rect(screen, color_on, Rect(24 + x1 * 16, 24 + y1 * 16, 12, 12))
-    4.動きの追加
-      1.色の変化の追加
+### 4.動きの追加
+#### 1.色の変化の追加
         c1 -= 2
       if c1 < 205:
         c1 = 255
@@ -66,7 +65,7 @@
       b2 += 3
       if b2 >255:
         b2 = 0
-      2.大きさの変化の追加
+#### 2.大きさの変化の追加
         s1 += 2
         if s1 > 225:
           s1 = 150
@@ -82,14 +81,14 @@
         y2 += 5
         if y2 > 240:
           y2 = 20
-      3.運動の様子の追加
+#### 3.運動の様子の追加
         x1 += 1
         if x1 > 4:
           x1 = 0
           y1 += 1
           if y1 > 6:
             y1 = 0
-      4.オブジェクトの表示
+#### 4.オブジェクトの表示
         if s3>s2:
           pygame.draw.circle(screen, (c2, c2, c2), (320, 240), s1)
           pygame.draw.circle(screen, (c4, c4, c4), (120, 120), s3)
@@ -104,8 +103,8 @@
           for y0 in range(7):
             pygame.draw.rect(screen, color_off, Rect(24 + x0 * 16, 24 + y0 * 16, 12, 12))
         pygame.draw.rect(screen, color_on, Rect(24 + x1 * 16, 24 + y1 * 16, 12, 12))
-  2.demo_LCD_font.py
-    1.フォントの追加
+## 2.demo_LCD_font.py
+### 1.フォントの追加
       LCD_4 = (0, 0, 0, 1, 0,
          0, 0, 1, 1, 0,
          0, 1, 0, 1, 0,
@@ -154,7 +153,7 @@
          0, 0, 0, 1, 0,
          0, 0, 1, 0, 0)
          LCD_font_styles = (LCD_0, LCD_1, LCD_2, LCD_3, LCD_4, LCD_5, LCD_6, LCD_7,LCD_8, LCD_9)
-      2.桁の追加
+### 2.桁の追加
         def LCD_display(x, y):
           code0 = int((x / 8) % 10)
           code1 = int((((x / 8)-code0) % 100) // 10)
@@ -163,8 +162,9 @@
           screen.blit(text1, rect1)
           lcd1.update_col(col=0, code=code1)
           lcd1.update_col(col=1, code=code0)
-  3.demo_03
-    1.表示の削除と変更
+## 3.demo_03
+### 1.表示の削除と変更
+#### 1.変更前
       display1 = Seven_seg(screen)
       display1.init_col(BLOCK_SIZE=9, BLOCK_INTV=10, COLOR_ON=GREEN, COLOR_OFF=DARK_GRAY)
       display1.init_row(X_ORG=8, Y_ORG=22, COL_INTV=6)
@@ -184,7 +184,7 @@
       display5 = Seven_seg(screen)
       display5.init_col(BLOCK_SIZE=9, BLOCK_INTV=9, COLOR_ON=(120, 200, 250), COLOR_OFF=GRAY)
       display5.init_row(X_ORG=8, Y_ORG=8, COL_INTV=6)
-      から
+#### 2.変更後
       lcd1 = LCD_font(screen)
       lcd1.__init__(screen)
       lcd1.init_col(BLOCK_SIZE=7, BLOCK_INTV=8, COLOR_ON=GREEN, COLOR_OFF=DARK_GRAY)
@@ -209,7 +209,8 @@
       display4.__init__(screen)
       display4.init_col(BLOCK_SIZE=4, BLOCK_INTV=6, COLOR_ON=GREEN, COLOR_OFF=DARK_GRAY)
       display4.init_row(X_ORG=2, Y_ORG=14, COL_INTV=6)
-    2.マイクラ表示の準備
+### 2.マイクラ表示の準備
+#### 1.変更前
       class LCD_font():
         def __init__(self, screen):
           self.screen = screen
@@ -234,8 +235,7 @@
           # codeの文字をcol桁目に表示、桁は最上位桁の左から右へ進む。
           block_size = self.BLOCK_SIZE
           i = 0
-          
-      から
+#### 2.変更後
       class LCD_font():
         def __init__(self, screen):
           self.screen = screen
@@ -307,48 +307,3 @@
                 mc.setBlock(mx1, my1, mz,  param.AIR)
                 i1 += 1
             i2 += 1
-        
-
-
-# LCDフォントによるデジタル時計と月間カレンダー[**(English version: README)**](./README.md)
-
-LCDフォントを使って、パイゲームとマインクラフトでデジタル時計と月間カレンダーを制作しました。
-これはGitHubでの私の第一歩です。以下のコードをぜひ試してください。
-
- - [LCD_font_calender_in_mc_and_pg.py](./LCD_font_calendar_in_mc_and_pg.py) : これは、パイゲームとマインクラフトのためのデジタル時計です。
-
-  [<img src="./images/LCD_font_calendar_in_mc_and_pg_py.png" width="350">](./LCD_font_monthly_calendar_in_mc_and_pg.py.png)
-
- - [LCD_font_monthly_calendar.pg.py](./LCD_font_monthly_calendar.pg.py) : 今日の日付を赤色表示できるパイゲームの月間カレンダーです。
-
-  [<img src="./images/LCD_font_monthly_calendar.pg.py.png" width="300">](./LCD_font_monthly_calendar.pg.py.png)
-
- - [LCD_font_monthly_calendar.mc.py](./LCD_font_monthly_calendar.mc.py) : マインクラフトの月間カレンダーです。大空を見回して大きなカレンダーを見つけてください！
-
-  [<img src="./images/LCD_font_monthly_calendar.mc.py.png" width="350">](./LCD_font_monthly_calendar.mc.py.png)
-
- - [LCD_font_changeable_monthly_calendar_pg.py](./LCD_font_changeable_monthly_calendar_pg.py) : これは、矢印キーで年月を変更できるパイゲームの月間カレンダーです。
- 上下矢印キーで年数を変更し、左右矢印キーで月を変更できます。しかし、なぜか突然操作中に月間カレンダー日付が消えてしまうことがあり、もし原因がわかる方がいたら、教えてください。
-  →　不具合修正しました。以下のコードをみてください。
-    [LCD_font_new_changeable_monthly_calendar_pg.py](./LCD_font_new_changeable_monthly_calendar_pg.py)
-
-  [<img src="./images/LCD_font_changeable_monthly_calendar_pg.py.png" width="300">](./LCD_font_changeable_monthly_calendar_pg.py.png)
-
- - [fancy_shapes.py](./fancy_shapes.py) : パイゲームできれいな形を作りました。緑の小さな四角形が順序良く色変わりしていきます。
-
-  [<img src="./images/fancy_shapes.pg.png" width="200">](./fancy_shapes.pg.png)
-
-
-## オリジナルREADMEは以下にあります。
-# pygame_samples
-
- - demo_01.py: pygameの超簡単なデモ。
- - demo_02.py: 7セグのシミュレーション、各セグメントを2ブロックで構成。Seven_segクラス使用。
- - demo_LCD_font_01.py: 5x7のLCDフォント制作用。LCD_fontクラス使用。
- - demo_LCD_font.py: 5x7のLCDフォント、完成版。
-
- - demo_freetype.py: pygame.freetypeでテキスト表示。（新しい方式）
- - demo_freetype.py: pygame.fontでテキスト表示。（古い方式）
- - demo_openmoji.py: オープンソースの絵文字、openmojiのデモ。キー操作のデモ。
- - seven_seg_pg.py: Seven_segクラス
- - lcd_font_pg.py: LCD_fontクラス
