@@ -316,3 +316,24 @@ https://github.com/harinezumirisu/pygame_samples/blob/main/images/%E7%94%BB%E9%9
 ### 3.変更後の動き
 https://github.com/harinezumirisu/pygame_samples/blob/main/images/%E7%94%BB%E9%9D%A2%E9%8C%B2%E7%94%BB%202025-03-01%20210810.mp4
 https://raw.githubusercontent.com/harinezumirisu/pygame_samples/refs/heads/main/images/2025-03-01_21.09.05.png
+## 4.demo_04
+### 1.表示のためのプログラムの変更
+#### 1.変更前
+            display3 = Seven_seg(screen)
+            display3.init_col(BLOCK_SIZE=5, BLOCK_INTV=7, COLOR_ON=GREEN, COLOR_OFF=DARK_GRAY)
+            display3.init_row(X_ORG=2, Y_ORG=28, COL_INTV=6)
+            display4 = Seven_seg(screen)
+            display4.init_col(BLOCK_SIZE=4, BLOCK_INTV=6, COLOR_ON=GREEN, COLOR_OFF=DARK_GRAY)
+            display4.init_row(X_ORG=2, Y_ORG=14, COL_INTV=6)
+#### 2.変更後
+            display1 = LCD_font_pg(screen)
+            display1.__init__(screen)
+            display1.init_col(BLOCK_SIZE=5, BLOCK_INTV=7, COLOR_ON=GREEN, COLOR_OFF=GRAY)
+            display1.init_row(X_ORG=2, Y_ORG=21, COL_INTV=6)
+
+            display2 = LCD_font_pg(screen)
+            display2.__init__(screen)
+            display2.init_col(BLOCK_SIZE=4, BLOCK_INTV=6, COLOR_ON=GREEN, COLOR_OFF=GRAY)
+            display2.init_row(X_ORG=2, Y_ORG=7, COL_INTV=6)
+#### 3.変更後の動き
+https://github.com/harinezumirisu/pygame_samples/blob/main/images/%E7%94%BB%E9%9D%A2%E9%8C%B2%E7%94%BB%202025-03-01%20215534.mp4
