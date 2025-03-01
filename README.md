@@ -104,7 +104,7 @@
             pygame.draw.rect(screen, color_off, Rect(24 + x0 * 16, 24 + y0 * 16, 12, 12))
         pygame.draw.rect(screen, color_on, Rect(24 + x1 * 16, 24 + y1 * 16, 12, 12))
 ### 5.変更後の動き
-<video controls src="20250301-1207-24.0434467.mp4" title="Title"></video>
+<video controls src="20250301-1207-24.0434467.mp4" title="Title">
 ## 2.demo_LCD_font.py
 ### 1.フォントの追加
       LCD_4 = (0, 0, 0, 1, 0,
@@ -165,7 +165,7 @@
           lcd1.update_col(col=0, code=code1)
           lcd1.update_col(col=1, code=code0)
 ### 3.変更後動作
-<video controls src="20250301-1203-43.4332997.mp4" title="Title"></video>
+<video controls src="20250301-1203-43.4332997.mp4" title="Title">
 ## 3.demo_03
 ### 1.表示の削除と変更
 #### 1.変更前
@@ -314,5 +314,5 @@
                 i1 += 1
             i2 += 1
 ### 3.変更後の動き
-<video controls src="20250301-1208-03.7114407.mp4" title="Title"></video>
+<video controls src="20250301-1208-03.7114407.mp4" title="Title">
 ![alt text](2025-03-01_21.09.05.png)
