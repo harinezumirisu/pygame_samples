@@ -315,4 +315,4 @@
             i2 += 1
 ### 3.変更後の動き
 <video controls src="20250301-1208-03.7114407.mp4" title="Title"></video>
-![alt text](2025-03-01_21.09.05.png)
+https://raw.githubusercontent.com/harinezumirisu/pygame_samples/refs/heads/main/images/2025-03-01_21.09.05.png
