@@ -127,7 +127,7 @@ class LCD_font():
         for y in range(7):
             i1 = 0
             for x in range(5):
-                if LCD_font_styles[code * 7 + i2][i1] == 1:
+                if LCD_font_styles[code * 7 + y][x] == 1:
                     color = self.COLOR_ON
                 else:
                     color = self.COLOR_OFF
@@ -143,7 +143,7 @@ class LCD_font():
                 org1 = (x0 + x * self.BLOCK_INTV, y0 + y * self.BLOCK_INTV)
                 # ドットを描く
                 pygame.draw.rect(self.screen, color, Rect(org1[0], org1[1], block_size, block_size))
-                if LCD_font_styles[code * 7 + i2][i1] == 1:
+                if LCD_font_styles[code * 7 + y][x] == 1:
                     mc.setBlock(mx1, my1, mz,  param.IRON_BLOCK)
                 else:
                     mc.setBlock(mx1, my1, mz,  param.AIR)
