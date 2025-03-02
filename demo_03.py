@@ -11,6 +11,7 @@ from mcje.minecraft import Minecraft
 import param_MCJE as param
 from lcd_font_mc import LCD_font as LCD_font_mc
 from lcd_font_pg import LCD_font as LCD_font_pg
+from lcd_font_pmc import LCD_font as LCD_font_pmc
 
 DARK_GRAY = (40, 40, 40)
 GRAY = (80, 80, 80)
