@@ -7,7 +7,7 @@ from pygame.locals import Rect
 from mcje.minecraft import Minecraft
 import param_MCJE as param
 
-with open("fonts/allfont.txt", encoding="utf-8") as f:
+with open("fonts/nomber_clock.txt", encoding="utf-8") as f:
     LCD_font_styles = f.read().split('\n')
 
 DARK_GRAY = (40, 40, 40)

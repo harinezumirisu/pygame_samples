@@ -9,8 +9,8 @@ import pygame.freetype
 from seven_seg_pg import Seven_seg
 from mcje.minecraft import Minecraft
 import param_MCJE as param
+from lcd_font_mc_clock import LCD_font as LCD_font_mc
 from lcd_font_pg import LCD_font as LCD_font_pg
-from lcd_font_mc import LCD_font as LCD_font_mc
 from lcd_font_pmc import LCD_font as LCD_font_pmc
 
 DARK_GRAY = (40, 40, 40)
@@ -31,7 +31,7 @@ digit = 0
 
 mc = Minecraft.create(port=param.PORT_MC)
 
-with open("fonts/allfont.txt", encoding="utf-8") as f:
+with open("fonts/number.txt", encoding="utf-8") as f:
     LCD_font_styles = f.read().split('\n')
 
 DARK_GRAY = (40, 40, 40)
@@ -56,20 +56,23 @@ screen = pygame.display.set_mode([400, 320])
 pygame.display.set_caption("pygame 7-segment display simulation")
 screen.fill(DARK_GRAY)
 
-lcd1 = LCD_font_mc(screen)
-lcd1.__init__(screen)
-lcd1.init_col(BLOCK_SIZE=7, BLOCK_INTV=8, COLOR_ON=GREEN, COLOR_OFF=DARK_GRAY)
-lcd1.init_row(X_ORG=2, Y_ORG=35, COL_INTV=6)
-
-display1 = LCD_font_pg(screen)
+display1 = LCD_font_mc(screen)
 display1.__init__(screen)
 display1.init_col(BLOCK_SIZE=5, BLOCK_INTV=7, COLOR_ON=GREEN, COLOR_OFF=GRAY)
 display1.init_row(X_ORG=2, Y_ORG=21, COL_INTV=6)
 
-display2 = LCD_font_pg(screen)
+display3 = Seven_seg(screen)
+display3.init_col(BLOCK_SIZE=5, BLOCK_INTV=7, COLOR_ON=GREEN, COLOR_OFF=DARK_GRAY)
+display3.init_row(X_ORG=2, Y_ORG=28, COL_INTV=6)
+
+display2 = LCD_font_mc(screen)
 display2.__init__(screen)
 display2.init_col(BLOCK_SIZE=4, BLOCK_INTV=6, COLOR_ON=GREEN, COLOR_OFF=GRAY)
 display2.init_row(X_ORG=2, Y_ORG=7, COL_INTV=6)
+
+display4 = Seven_seg(screen)
+display4.init_col(BLOCK_SIZE=4, BLOCK_INTV=6, COLOR_ON=GREEN, COLOR_OFF=DARK_GRAY)
+display4.init_row(X_ORG=2, Y_ORG=14, COL_INTV=6)
 
 mc.setBlock(-5, 70, -5, param.GOLD_BLOCK)    
 
@@ -97,14 +100,23 @@ while running:
     second2=(second%(10**1))
         
         
-    display1.update_col(col=0, code=hour1)
-    display1.update_col(col=1, code=hour2)
-    display1.update_col(col=2, code=10)
-    display1.update_col(col=3, code=minute1)          
-    display1.update_col(col=4, code=minute2)                
-    display1.update_col(col=5, code=10)
-    display1.update_col(col=6, code=second1)
-    display1.update_col(col=7, code=second2)
+    display1.update_col(col=0, code=hour1, y_change=90)
+    display1.update_col(col=1, code=hour2, y_change=90)
+    display1.update_col(col=2, code=10, y_change=90)
+    display1.update_col(col=3, code=minute1, y_change=90)          
+    display1.update_col(col=4, code=minute2, y_change=90)                
+    display1.update_col(col=5, code=10, y_change=90)
+    display1.update_col(col=6, code=second1, y_change=90)
+    display1.update_col(col=7, code=second2, y_change=90)
+
+    display3.update_col(col=0, num=hour1, base=10)
+    display3.update_col(col=1, num=hour2, base=10)
+    display3.update_col(col=2, num=1, base=10)
+    display3.update_col(col=3, num=minute1, base=10)          
+    display3.update_col(col=4, num=minute2, base=10)                
+    display3.update_col(col=5, num=1, base=10)
+    display3.update_col(col=6, num=second1, base=10)
+    display3.update_col(col=7, num=second2, base=10)
 
     day = dt_now.day
     month = dt_now.month
@@ -119,16 +131,27 @@ while running:
     day1=(((day-(day%(10**1)))%(10**2))//(10**1))
     day2=(day%(10**1))
 
-    display2.update_col(col=0, code=year1)
-    display2.update_col(col=1, code=year2)
-    display2.update_col(col=2, code=year3)
-    display2.update_col(col=3, code=year4)
-    display2.update_col(col=4, code=10)
-    display2.update_col(col=5, code=month1)
-    display2.update_col(col=6, code=month2)
-    display2.update_col(col=7, code=10)
-    display2.update_col(col=8, code=day1)
-    display2.update_col(col=9, code=day2)
+    display2.update_col(col=0, code=year1, y_change=100)
+    display2.update_col(col=1, code=year2, y_change=100)
+    display2.update_col(col=2, code=year3, y_change=100)
+    display2.update_col(col=3, code=year4, y_change=100)
+    display2.update_col(col=4, code=10, y_change=100)
+    display2.update_col(col=5, code=month1, y_change=100)
+    display2.update_col(col=6, code=month2, y_change=100)
+    display2.update_col(col=7, code=10, y_change=100)
+    display2.update_col(col=8, code=day1, y_change=100)
+    display2.update_col(col=9, code=day2, y_change=100)
+    
+    display4.update_col(col=0, num=year1, base=10)
+    display4.update_col(col=1, num=year2, base=10)
+    display4.update_col(col=2, num=year3, base=10)
+    display4.update_col(col=3, num=year4, base=10)
+    display4.update_col(col=4, num=1, base=10)
+    display4.update_col(col=5, num=month1, base=10)
+    display4.update_col(col=6, num=month2, base=10)
+    display4.update_col(col=7, num=1, base=10)
+    display4.update_col(col=8, num=day1, base=10)
+    display4.update_col(col=9, num=day2, base=10)
 
     pygame.display.flip()  # update_col
     clock.tick(20)  # FPS, Frame Per Second
