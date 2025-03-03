@@ -5,7 +5,7 @@ from math import log
 import pygame
 from pygame.locals import Rect
 
-from mcpi.minecraft import Minecraft
+from mcje.minecraft import Minecraft
 import param_MCJE1122 as param
 from time import sleep
 mc = Minecraft.create(port=param.PORT_MC)
