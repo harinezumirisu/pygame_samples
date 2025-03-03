@@ -31,9 +31,6 @@ digit = 0
 
 mc = Minecraft.create(port=param.PORT_MC)
 
-with open("fonts/allfont.txt", encoding="utf-8") as f:
-    LCD_font_styles = f.read().split('\n')
-
 DARK_GRAY = (40, 40, 40)
 GRAY = (80, 80, 80)
 RED = (255, 0, 0)

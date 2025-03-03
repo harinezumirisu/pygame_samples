@@ -13,7 +13,6 @@ from lcd_font_pg import LCD_font as LCD_font_pg
 from lcd_font_mc import LCD_font as LCD_font_mc
 from lcd_font_pmc import LCD_font as LCD_font_pmc
 
-
 DARK_GRAY = (40, 40, 40)
 GRAY = (80, 80, 80)
 RED = (255, 0, 0)
@@ -31,10 +30,6 @@ y_change = 0
 digit = 0
 
 mc = Minecraft.create(port=param.PORT_MC)
-mc.postToChat('time clock')
-
-with open("fonts/allfont.txt", encoding="utf-8") as f:
-    LCD_font_styles = f.read().split('\n')
 
 DARK_GRAY = (40, 40, 40)
 GRAY = (80, 80, 80)
@@ -58,12 +53,12 @@ screen = pygame.display.set_mode([400, 320])
 pygame.display.set_caption("pygame 7-segment display simulation")
 screen.fill(DARK_GRAY)
 
-display1 = LCD_font_pmc(mc)
+display1 = LCD_font_pg(screen)
 display1.__init__(screen)
 display1.init_col(BLOCK_SIZE=5, BLOCK_INTV=7, COLOR_ON=GREEN, COLOR_OFF=GRAY)
 display1.init_row(X_ORG=2, Y_ORG=21, COL_INTV=6)
 
-display2 = LCD_font_pmc(mc)
+display2 = LCD_font_pg(screen)
 display2.__init__(screen)
 display2.init_col(BLOCK_SIZE=4, BLOCK_INTV=6, COLOR_ON=GREEN, COLOR_OFF=GRAY)
 display2.init_row(X_ORG=2, Y_ORG=7, COL_INTV=6)
