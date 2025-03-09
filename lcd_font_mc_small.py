@@ -2,6 +2,7 @@
 # 5x7ドットマトリクス
 
 # from math import log
+import sys
 import pygame
 from pygame.locals import Rect
 from mcje.minecraft import Minecraft

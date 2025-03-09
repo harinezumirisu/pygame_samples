@@ -2,6 +2,7 @@
 # Connection and blockID : MCJE
 # World parameters : MCJE
 
+from mcje.vec3 import Vec3
 print("param_MCJE loaded")
 
 # axis parameters
@@ -18,9 +19,10 @@ Y_BOTTOM = 0          # the bottom where blocks can be set
 Y_BOTTOM_STEVE = -64  # the bottom where Steve can go down
 
 # connection port
+PLAYER_NAME = "harinezumi131"  # player name in Minecraft
 ADRS_MCR = "code2createclub.mydns.jp"
 PORT_MC = 25575  # XServer GAMEs
-PLAYER_ORIGIN = -100, 63, -300
+PLAYER_ORIGIN = Vec3(-100, 63, -300)
 
 # block IDs  You can find IDs here: https://minecraft-ids.grahamedgecombe.com/
 AIR = "air"

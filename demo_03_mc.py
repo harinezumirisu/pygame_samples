@@ -1,6 +1,7 @@
 # demo for 7-segment simulation
 # using the class 'Seven_seg' in seven_seg_pg.py
 
+import sys
 from datetime import datetime
 import pygame
 import pygame
