@@ -17,8 +17,6 @@ GREEN = (10, 250, 10)
 YELLOW = (250, 250, 20)
 WHITE = (250, 250, 250)
 
-mc = Minecraft.create(port=param.PORT_MC)
-
 class LCD_font():
     def __init__(self, screen):
         self.screen = screen
@@ -39,49 +37,21 @@ class LCD_font():
         # 各桁のブロック間隔をブロック数で指定（インターバル）
         self.COL_INTV = COL_INTV * self.BLOCK_INTV
 
-    def update_col(self, col=0, code=2, mz=-10, y_change=90):  # ある桁にある文字を表示する関数
+    def update_col(self, col=0, code=2):  # ある桁にある文字を表示する関数
         # codeの文字をcol桁目に表示、桁は最上位桁の左から右へ進む。
         block_size = self.BLOCK_SIZE
-        i2 = 0
+        i = 0
         for y in range(7):
-            i1 = 0
             for x in range(5):
-                if LCD_font_styles[code * 7 + y][x] == 1:
+                if LCD_font_styles[int(code)][i] == 1:
                     color = self.COLOR_ON
                 else:
                     color = self.COLOR_OFF
                 # 桁の原点
                 x0 = self.X_ORG + self.COL_INTV * col
                 y0 = self.Y_ORG
-                # 桁の原点
-                mx0 = 48 - (6 ** col)
-                my0 = 0
-                mx1 = mx0 - x
-                my1 = my0 - y + y_change
                 # ドットの原点座標
                 org1 = (x0 + x * self.BLOCK_INTV, y0 + y * self.BLOCK_INTV)
                 # ドットを描く
                 pygame.draw.rect(self.screen, color, Rect(org1[0], org1[1], block_size, block_size))
-                i1 += 1
-            i2 += 1
-    def backspace(self, col=0, mz=-10, y_change=90):
-        block_size = self.BLOCK_SIZE
-        i2 = 0
-        for y in range(7):
-            i1 = 0
-            for x in range(5):
-                color = self.COLOR_OFF
-                # 桁の原点
-                x0 = self.X_ORG + self.COL_INTV * col
-                y0 = self.Y_ORG
-                # 桁の原点
-                mx0 = 48 - (6 ** col)
-                my0 = 0
-                mx1 = mx0 - x
-                my1 = my0 - y + y_change
-                # ドットの原点座標
-                org1 = (x0 + x * self.BLOCK_INTV, y0 + y * self.BLOCK_INTV)
-                # ドットを描く
-                pygame.draw.rect(self.screen, color, Rect(org1[0], org1[1], block_size, block_size))
-                i1 += 1
-            i2 += 1
+                i += 1

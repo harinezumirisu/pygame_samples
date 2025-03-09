@@ -18,7 +18,9 @@ Y_BOTTOM = 0          # the bottom where blocks can be set
 Y_BOTTOM_STEVE = -64  # the bottom where Steve can go down
 
 # connection port
-PORT_MC = 14712
+ADRS_MCR = "code2createclub.mydns.jp"
+PORT_MC = 25575  # XServer GAMEs
+PLAYER_ORIGIN = -100, 63, -300
 
 # block IDs  You can find IDs here: https://minecraft-ids.grahamedgecombe.com/
 AIR = "air"

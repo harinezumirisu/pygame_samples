@@ -6,6 +6,7 @@ import pygame
 from pygame.locals import Rect
 from mcje.minecraft import Minecraft
 import param_MCJE as param
+from param_MCJE import PLAYER_ORIGIN as po
 
 with open("fonts/allfont.txt", encoding="utf-8") as f:
     LCD_font_styles = f.read().split('\n')
@@ -17,11 +18,16 @@ GREEN = (10, 250, 10)
 YELLOW = (250, 250, 20)
 WHITE = (250, 250, 250)
 
-mc = Minecraft.create(port=param.PORT_MC)
+mc = Minecraft.create(address=param.ADRS_MCR, port=param.PORT_MCR)
+result = mc.setPlayer(param.PLAYER_NAME, po.x, po.y, po.z)
+if "Error" in result:
+    sys.exit(result)
+else:
+    print(result)
 
 class LCD_font():
-    def __init__(self, screen):
-        self.screen = screen
+    def __init__(self, mc):
+        self.mc = mc
 
     def init_col(self, BLOCK_SIZE=4, BLOCK_INTV=4, COLOR_ON=WHITE, COLOR_OFF=GRAY):
         # ひと桁、コラムの設定
