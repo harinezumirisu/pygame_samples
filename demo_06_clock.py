@@ -29,8 +29,6 @@ y_change = 0
 
 digit = 0
 
-mc = Minecraft.create(port=param.PORT_MC)
-
 DARK_GRAY = (40, 40, 40)
 GRAY = (80, 80, 80)
 RED = (255, 0, 0)
@@ -69,9 +67,7 @@ display2.init_row(X_ORG=2, Y_ORG=7, COL_INTV=6)
 
 display4 = Seven_seg(screen)
 display4.init_col(BLOCK_SIZE=4, BLOCK_INTV=6, COLOR_ON=GREEN, COLOR_OFF=DARK_GRAY)
-display4.init_row(X_ORG=2, Y_ORG=14, COL_INTV=6)
-
-mc.setBlock(-5, 70, -5, param.GOLD_BLOCK)    
+display4.init_row(X_ORG=2, Y_ORG=14, COL_INTV=6)  
 
 running = True
 # infinite loop top ----
